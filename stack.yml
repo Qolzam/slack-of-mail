@@ -1,0 +1,15 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+functions:
+  slack-mail:
+    lang: node
+    handler: ./slack-mail
+    image: slack-mail:latest
+    labels: 
+        com.openfaas.scale.zero: false
+    environment:
+        content_type: "application/json"
+    secrets:
+      - secrets
